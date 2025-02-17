@@ -13,7 +13,7 @@ export default class Client {
     this.apiKey = apiKey;
   }
 
-  async searchProducts(options: SearchProductsOptions) {
+  async searchProducts(options?: SearchProductsOptions) {
     return this.withApiKeyCache(searchProducts, options);
   }
 
