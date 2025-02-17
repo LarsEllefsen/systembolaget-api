@@ -1,0 +1,11 @@
+{
+  "name": "systembolaget-api",
+  "version": "0.0.1",
+  "author": {
+    "name": "Lars Moe Ellefsen"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "tsc": "^2.0.4"
+  }
+}
