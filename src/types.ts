@@ -21,6 +21,11 @@ export type CategoryOptions =
       subCategory: (typeof LiquorSubCategories)[keyof typeof LiquorSubCategories];
     };
 
+export type SearchResults = {
+  products: SearchProduct[];
+  pagination: Pagination;
+};
+
 export type SearchProduct = {
   productId: string;
   productName: string;

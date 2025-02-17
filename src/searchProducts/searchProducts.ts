@@ -1,4 +1,4 @@
-import { CategoryOptions } from "../types";
+import { CategoryOptions, SearchResults } from "../types";
 import { GET } from "../utils/GET";
 import {
   categoryToCategoryLevel1Map,
@@ -84,7 +84,7 @@ const getSearchParams = (options?: SearchProductsOptions): URLSearchParams => {
 export const searchProducts = async (
   apiKey: string,
   options?: SearchProductsOptions
-) => {
+): Promise<SearchResults> => {
   const searchResult = await GET<ProductSearchResultDTO>(
     PRODUCT_SEARCH_URL,
     apiKey,

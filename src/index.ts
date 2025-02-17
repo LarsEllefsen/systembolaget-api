@@ -6,3 +6,5 @@ export const newClient = async () => {
 
   return new Client(apiKey);
 };
+
+export * from "./constants";
