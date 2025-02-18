@@ -8,3 +8,4 @@ export const newClient = async () => {
 };
 
 export * from "./constants";
+export * from "./types";
