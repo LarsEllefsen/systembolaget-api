@@ -106,3 +106,77 @@ type Pagination = {
   pageSize: number;
 };
 ```
+
+### CategoryOptions
+
+```ts
+type CategoryOptions =
+  | {
+      category: "Beer";
+      subCategory:
+        | "Ale"
+        | "DarkLager"
+        | "Lager"
+        | "PorterAndStout"
+        | "Wheat"
+        | "Sour"
+        | "Other";
+    }
+  | {
+      category: "Wine";
+      subCategory:
+        | "RedWine"
+        | "WhiteWine"
+        | "SparklingWine"
+        | "RoseWine"
+        | "WineBox"
+        | "FortifiedWine"
+        | "FlavoredAndFruitWine"
+        | "MulledWine"
+        | "Vermouth"
+        | "Sake"
+        | "Aperitivo";
+    }
+  | {
+      category: "Liquor";
+      subCategory:
+        | "Whisky"
+        | "Liqueur"
+        | "Gin"
+        | "Aquavit"
+        | "Cognac"
+        | "Rum"
+        | "Vodka"
+        | "Grappa"
+        | "Tequila"
+        | "ArmagnacAndBrandy"
+        | "FlavoredLiquor"
+        | "FruitLiquor"
+        | "Bitter"
+        | "Calvados"
+        | "DrinksAndCocktails"
+        | "AniseLiquor"
+        | "Punch"
+        | "MixedSet"
+        | "Aperitivo";
+    }
+  | {
+      category: "CiderAndMixedDrinks";
+      subCategory: "Cider" | "MixedDrinks";
+    }
+  | {
+      category: "AlcoholFree";
+      subCategory:
+        | "Beer"
+        | "Sparkling"
+        | "CiderAndMixedDrinks"
+        | "MulledWineAndChristmasDrinks"
+        | "Must"
+        | "DrinksAndCocktails"
+        | "RedWine"
+        | "WhiteWine"
+        | "Rose"
+        | "Avec"
+        | "Schnaps";
+    };
+```
