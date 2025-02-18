@@ -1,6 +1,10 @@
 import {
+  ALCOHOL_FREE_CATEGORY,
+  AlcoholFreeSubCategory,
   BEER_CATEGORY,
   BeerSubCategories,
+  CIDER_AND_MIXED_DRINKS_CATEGORY,
+  CiderAndMixedDrinksSubCategories,
   LIQUOR_CATEGORY,
   LiquorSubCategories,
   WINE_CATEGORY,
@@ -19,6 +23,14 @@ export type CategoryOptions =
   | {
       category: typeof LIQUOR_CATEGORY;
       subCategory: (typeof LiquorSubCategories)[keyof typeof LiquorSubCategories];
+    }
+  | {
+      category: typeof CIDER_AND_MIXED_DRINKS_CATEGORY;
+      subCategory: (typeof CiderAndMixedDrinksSubCategories)[keyof typeof CiderAndMixedDrinksSubCategories];
+    }
+  | {
+      category: typeof ALCOHOL_FREE_CATEGORY;
+      subCategory: (typeof AlcoholFreeSubCategory)[keyof typeof AlcoholFreeSubCategory];
     };
 
 export type SearchResults = {

@@ -1,8 +1,8 @@
 export const BEER_CATEGORY = "Beer";
 export const WINE_CATEGORY = "Wine";
 export const LIQUOR_CATEGORY = "Liquor";
-export const CIDER_AND_MIXED_DRINKS_CATEGORY = "Cider and mixed drinks";
-export const ALCOHOL_FREE_CATEGORY = "Alcohol free";
+export const CIDER_AND_MIXED_DRINKS_CATEGORY = "CiderAndMixedDrinks";
+export const ALCOHOL_FREE_CATEGORY = "AlcoholFree";
 
 export const WineSubCategories = {
   RedWine: "RedWine",
