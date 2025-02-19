@@ -1,9 +1,7 @@
 import { getApiKey } from "./credentials";
 import { ForbiddenError } from "./errors/ForbiddenError";
-import {
-  SearchProductsOptions,
-  searchProducts,
-} from "./searchProducts/searchProducts";
+import { getStores } from "./getStores";
+import { SearchProductsOptions, searchProducts } from "./searchProducts";
 
 export default class Client {
   private apiKey: string;
@@ -17,9 +15,13 @@ export default class Client {
     return this.withApiKeyCache(searchProducts, options);
   }
 
+  async getStores() {
+    return this.withApiKeyCache(getStores);
+  }
+
   private async withApiKeyCache<T>(
-    fn: (apiKey: string, arg: any) => Promise<T>,
-    arg: any
+    fn: (apiKey: string, arg?: any) => Promise<T>,
+    arg?: any
   ): Promise<T> {
     try {
       return fn(this.apiKey, arg);

@@ -81,7 +81,7 @@ const getSearchParams = (options?: SearchProductsOptions): URLSearchParams => {
   return searchParams;
 };
 
-export const searchProducts = async (
+const searchProducts = async (
   apiKey: string,
   options?: SearchProductsOptions
 ): Promise<SearchResults> => {
@@ -96,3 +96,5 @@ export const searchProducts = async (
     pagination: mapToPagination(searchResult.metadata),
   };
 };
+
+export default searchProducts;

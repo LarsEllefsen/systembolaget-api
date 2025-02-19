@@ -62,3 +62,15 @@ export type Pagination = {
   totalPages: number;
   pageSize: number;
 };
+
+export type Store = {
+  storeId: string;
+  storeName: string;
+  streetAddress: string;
+  county: string;
+  city: string;
+  position: {
+    latitude: number;
+    longitude: number;
+  };
+};
