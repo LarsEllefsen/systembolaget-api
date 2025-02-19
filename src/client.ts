@@ -1,7 +1,7 @@
 import { getApiKey } from "./credentials";
 import { ForbiddenError } from "./errors/ForbiddenError";
-import { getStores } from "./getStores";
-import { SearchProductsOptions, searchProducts } from "./searchProducts";
+import { getStores } from "./getStores/index";
+import { SearchProductsOptions, searchProducts } from "./searchProducts/index";
 
 export default class Client {
   private apiKey: string;

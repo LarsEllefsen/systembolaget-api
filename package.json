@@ -15,7 +15,7 @@
     ".": "./dist/index.js"
   },
   "scripts": {
-    "build": "rimraf dist && tsc --outDir dist --module esnext --target esnext"
+    "build": "rimraf dist && tsc --outDir dist"
   },
   "devDependencies": {
     "rimraf": "^6.0.1",
