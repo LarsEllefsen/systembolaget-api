@@ -38,6 +38,11 @@ export type SearchResults = {
   pagination: Pagination;
 };
 
+export type SearchResultsWithStock = {
+  products: SearchProductWithStock[];
+  pagination: Pagination;
+};
+
 export type SearchProduct = {
   productId: string;
   productName: string;

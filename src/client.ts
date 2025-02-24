@@ -5,6 +5,7 @@ import getStockBalance, {
 } from "./getStockBalance/getStockBalance";
 import { getStores } from "./getStores/index";
 import { SearchProductsOptions, searchProducts } from "./searchProducts/index";
+import { SearchProductWithStock, SearchResultsWithStock } from "./types";
 
 export default class Client {
   private apiKey: string;
@@ -27,6 +28,31 @@ export default class Client {
       productId,
       storeId,
     } satisfies getStockBalanceOptions);
+  }
+
+  /**
+   * A specialized version of searchProducts that searches for products in stock in a given store.
+   * Differs from searchProducts with storeId option as this does an additional request to fetch stock balance for each matched product.
+   * @param storeId The ID of the store to search for products in
+   * @param options Search options
+   */
+  async searchProductsInStore(
+    storeId: string,
+    options?: SearchProductsOptions
+  ): Promise<SearchResultsWithStock> {
+    const { products, pagination } = await this.searchProducts(options);
+
+    const productsWithStock = await Promise.all(
+      products.map(async (product) => {
+        const stockBalance = await this.getStockBalance(
+          product.productId,
+          storeId
+        );
+        return { ...product, ...stockBalance } satisfies SearchProductWithStock;
+      })
+    );
+
+    return { pagination, products: productsWithStock };
   }
 
   private async withApiKeyCache<T>(
