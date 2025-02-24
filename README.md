@@ -44,12 +44,53 @@ Or if you prefer to not use strings directly the package also exports some const
 ```ts
 import { BEER_CATEGORY, BeerSubCategories } from "systembolaget-api";
 
-const products = await client.searchProducts({
+const { products, pagination } = await client.searchProducts({
   category: {
     category: BEER_CATEGORY,
     subCategory: BeerSubCategories.PorterAndStout,
   },
 });
+```
+
+### <code>getStores() : Promise<[Store](#Store)[]></code>
+
+Gets a list of all stores.
+
+Example:
+
+```ts
+const stores = await client.getStores();
+```
+
+### <code>getStockBalance(productId: string, storeId: string) : Promise<[StockBalanceForStore](#StockBalanceForStore)></code>
+
+Gets stock balance for the given product in the given store.
+
+Example:
+
+```ts
+const stockBalance = await client.getStockBalance("1060903", "1411");
+```
+
+### <code>searchProductsInStore(productId: string, storeId: string) : Promise<[SearchProductWithStock](#StockBalanceForStore)></code>
+
+A specialized version of searchProducts that searches for products in stock in a given store.
+Differs from searchProducts with storeId option as this does an additional request to fetch stock balance for each matched product.
+
+Example:
+
+```ts
+const searchOptions = {
+  category: {
+    category: BEER_CATEGORY,
+    subCategory: BeerSubCategories.PorterAndStout,
+  },
+};
+
+const { productsInStore, pagination } = await client.searchProductsInStore(
+  "1411",
+  searchOptions
+);
 ```
 
 ### Types
@@ -65,7 +106,7 @@ type SearchProductsOptions = {
 };
 ```
 
-### SearchResults
+#### SearchResults
 
 ```ts
 type SearchResults = {
@@ -74,7 +115,16 @@ type SearchResults = {
 };
 ```
 
-### SearchProduct
+#### SearchResultsWithStock
+
+```ts
+type SearchResultsWithStock = {
+  products: SearchProductWithStock[];
+  pagination: Pagination;
+};
+```
+
+#### SearchProduct
 
 ```ts
 type SearchProduct = {
@@ -95,7 +145,13 @@ type SearchProduct = {
 };
 ```
 
-### Pagination
+#### SearchProductWithStock
+
+```ts
+type SearchProductWithStock = SearchProduct & StockBalanceForStore;
+```
+
+#### Pagination
 
 ```ts
 type Pagination = {
@@ -107,7 +163,35 @@ type Pagination = {
 };
 ```
 
-### CategoryOptions
+#### Store
+
+```ts
+type Store = {
+  storeId: string;
+  storeName: string;
+  streetAddress: string;
+  county: string;
+  city: string;
+  position: {
+    latitude: number;
+    longitude: number;
+  };
+};
+```
+
+#### StockBalanceForStore
+
+```ts
+type StockBalanceForStore = {
+  productId: string;
+  storeId: string;
+  shelf: string | null;
+  stock: number;
+  isInStoreAssortment: boolean;
+};
+```
+
+#### CategoryOptions
 
 ```ts
 type CategoryOptions =
