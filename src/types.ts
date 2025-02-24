@@ -14,23 +14,23 @@ import {
 export type CategoryOptions =
   | {
       category: typeof BEER_CATEGORY;
-      subCategory: (typeof BeerSubCategories)[keyof typeof BeerSubCategories];
+      subCategory?: (typeof BeerSubCategories)[keyof typeof BeerSubCategories];
     }
   | {
       category: typeof WINE_CATEGORY;
-      subCategory: (typeof WineSubCategories)[keyof typeof WineSubCategories];
+      subCategory?: (typeof WineSubCategories)[keyof typeof WineSubCategories];
     }
   | {
       category: typeof LIQUOR_CATEGORY;
-      subCategory: (typeof LiquorSubCategories)[keyof typeof LiquorSubCategories];
+      subCategory?: (typeof LiquorSubCategories)[keyof typeof LiquorSubCategories];
     }
   | {
       category: typeof CIDER_AND_MIXED_DRINKS_CATEGORY;
-      subCategory: (typeof CiderAndMixedDrinksSubCategories)[keyof typeof CiderAndMixedDrinksSubCategories];
+      subCategory?: (typeof CiderAndMixedDrinksSubCategories)[keyof typeof CiderAndMixedDrinksSubCategories];
     }
   | {
       category: typeof ALCOHOL_FREE_CATEGORY;
-      subCategory: (typeof AlcoholFreeSubCategory)[keyof typeof AlcoholFreeSubCategory];
+      subCategory?: (typeof AlcoholFreeSubCategory)[keyof typeof AlcoholFreeSubCategory];
     };
 
 export type SearchResults = {
