@@ -1,5 +1,8 @@
 import { getApiKey } from "./credentials";
 import { ForbiddenError } from "./errors/ForbiddenError";
+import getStockBalance, {
+  getStockBalanceOptions,
+} from "./getStockBalance/getStockBalance";
 import { getStores } from "./getStores/index";
 import { SearchProductsOptions, searchProducts } from "./searchProducts/index";
 
@@ -17,6 +20,13 @@ export default class Client {
 
   async getStores() {
     return this.withApiKeyCache(getStores);
+  }
+
+  async getStockBalance(productId: string, storeId: string) {
+    return this.withApiKeyCache(getStockBalance, {
+      productId,
+      storeId,
+    } satisfies getStockBalanceOptions);
   }
 
   private async withApiKeyCache<T>(

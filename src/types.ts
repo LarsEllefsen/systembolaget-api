@@ -55,6 +55,8 @@ export type SearchProduct = {
   subCategory: string | null;
 };
 
+export type SearchProductWithStock = SearchProduct & StockBalanceForStore;
+
 export type Pagination = {
   currentPage: number;
   prevPage: number;
@@ -73,4 +75,12 @@ export type Store = {
     latitude: number;
     longitude: number;
   };
+};
+
+export type StockBalanceForStore = {
+  productId: string;
+  storeId: string;
+  shelf: string | null;
+  stock: number;
+  isInStoreAssortment: boolean;
 };
